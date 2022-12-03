@@ -10,6 +10,10 @@ const form = document
 
 let array = [];
 let shuffled = [];
+// ajs array is an empty array that does not return anything
+let ajArray = [];
+// history keeps track of all the deleted names
+let history = [];
 
 btn.addEventListener("click", () => {
   let inputValue = named.value;
@@ -26,9 +30,39 @@ btn.addEventListener("click", () => {
 
 // shuffle function
 shuffle.addEventListener("click", () => {
+
+  if (array.length === 2) {
+    shuffle.disabled = true;
+  }
+
   randomMatch(array, 2);
-  console.log(shuffled);
-  console.log(array);
+
+  // console.log(shuffled);
+  // console.log(array);
+
+  // loop thrugh shuffle last index
+  ajArray = shuffled[shuffled.length - 1].filter(function (item) {
+    // check if its items includes the current array
+    if (array.includes(item)) {
+      // console.log(item);
+      // get the index
+      // console.log(array.indexOf(item));
+      // push, spread and splice it 
+      history.push(...array.splice(array.indexOf(item), 1));
+    }
+    console.log("i am the remaining array after splice");
+    console.log(array);
+
+    console.log("i keep track of the removed items");
+    console.log(history);
+
+  });
+
+
+
+
+
+
   // console.log(array.splice(randoms, 2));
 });
 
@@ -54,3 +88,24 @@ const randomMatch = (arr, n) => {
   // array.splice(shuffled[randoms]);
   return console.log(randoms);
 };
+
+
+
+// testing logic
+
+var array2 = [["aj", "joh"], ["mimi", "ot"]];
+// var array0 = ["aj", "t", "y", "mimi"];
+var array1 = ["aj", "ti", "ot", "j", "ty", "ut"];
+
+var array3 = array2[1].filter(function (item) {
+
+  if (array1.includes(item)) {
+    console.log(item);
+    console.log(array1.indexOf(item));
+    return item;
+  }
+});
+
+// console.log(array3);
+
+console.log(randomMatch(array1, 2));
