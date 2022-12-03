@@ -30,15 +30,11 @@ btn.addEventListener("click", () => {
 
 // shuffle function
 shuffle.addEventListener("click", () => {
-
   if (array.length === 2) {
     shuffle.disabled = true;
   }
 
   randomMatch(array, 2);
-
-  // console.log(shuffled);
-  // console.log(array);
 
   // loop thrugh shuffle last index
   ajArray = shuffled[shuffled.length - 1].filter(function (item) {
@@ -47,7 +43,7 @@ shuffle.addEventListener("click", () => {
       // console.log(item);
       // get the index
       // console.log(array.indexOf(item));
-      // push, spread and splice it 
+      // push, spread and splice it
       history.push(...array.splice(array.indexOf(item), 1));
     }
     console.log("i am the remaining array after splice");
@@ -55,13 +51,7 @@ shuffle.addEventListener("click", () => {
 
     console.log("i keep track of the removed items");
     console.log(history);
-
   });
-
-
-
-
-
 
   // console.log(array.splice(randoms, 2));
 });
@@ -89,23 +79,21 @@ const randomMatch = (arr, n) => {
   return console.log(randoms);
 };
 
-
-
 // testing logic
 
-var array2 = [["aj", "joh"], ["mimi", "ot"]];
-// var array0 = ["aj", "t", "y", "mimi"];
-var array1 = ["aj", "ti", "ot", "j", "ty", "ut"];
+// var array2 = [["aj", "joh"], ["mimi", "ot"]];
+// // var array0 = ["aj", "t", "y", "mimi"];
+// var array1 = ["aj", "ti", "ot", "j", "ty", "ut"];
 
-var array3 = array2[1].filter(function (item) {
+// var array3 = array2[1].filter(function (item) {
 
-  if (array1.includes(item)) {
-    console.log(item);
-    console.log(array1.indexOf(item));
-    return item;
-  }
-});
+//   if (array1.includes(item)) {
+//     console.log(item);
+//     console.log(array1.indexOf(item));
+//     return item;
+//   }
+// });
 
-// console.log(array3);
+// // console.log(array3);
 
-console.log(randomMatch(array1, 2));
+// console.log(randomMatch(array1, 2));
