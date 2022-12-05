@@ -5,14 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
-    <form action="">
-      <input type="text" />
-      <button class="btn" type="submit">submit</button>
-      <button class="shuffle">shuffle</button>
-    </form>
+    <div class="section-center">
+      <form action="" class="match-form">
+        <p class="alert"></p>
+        <div class="form-control">
+          <input type="text" id="match" placeholder="e.g. ot-sama" />
+          <button type="submit" class="submit-btn">submit</button>
+        </div>
+        <br />
+        <button class="shuffle btn">shuffle</button>
+      </form>
+    </div>
+
     <ul id="list"></ul>
+    <span class="error"></span>
+    <div class="matches"></div>
+    <div class="history"></div>
   </body>
   <script src="./assets/js/practice.js"></script>
 </html>

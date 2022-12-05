@@ -1,7 +1,12 @@
-const btn = document.querySelector(".btn");
-const named = document.querySelector("input");
+const btn = document.querySelector(".submit-btn");
+const named = document.querySelector("#match");
 const shuffle = document.querySelector(".shuffle");
+const error = document.querySelector(".alert");
+const matches = document.querySelector(".matches");
+const matchedHistory = document.querySelector(".history");
+
 let list = document.getElementById("list");
+
 const form = document
   .querySelector("form")
   .addEventListener("click", (event) => {
@@ -24,6 +29,7 @@ btn.addEventListener("click", () => {
     list.appendChild(li);
   } else {
     console.log("field is empty");
+    error.textContent = "field is empty";
   }
   clearThis(named);
 });
@@ -46,11 +52,11 @@ shuffle.addEventListener("click", () => {
       // push, spread and splice it
       history.push(...array.splice(array.indexOf(item), 1));
     }
-    console.log("i am the remaining array after splice");
+    // console.log("i am the remaining array after splice");
     console.log(array);
-
-    console.log("i keep track of the removed items");
-    console.log(history);
+    matchedHistory.innerHTML = history;
+    // console.log("i keep track of the removed items");
+    // console.log(history);
   });
 
   // console.log(array.splice(randoms, 2));
@@ -75,25 +81,8 @@ const randomMatch = (arr, n) => {
   }
   let randoms = result;
   shuffled.push(randoms);
+  matches.innerHTML = shuffled;
+  console.log(shuffled);
   // array.splice(shuffled[randoms]);
-  return console.log(randoms);
+  return randoms;
 };
-
-// testing logic
-
-// var array2 = [["aj", "joh"], ["mimi", "ot"]];
-// // var array0 = ["aj", "t", "y", "mimi"];
-// var array1 = ["aj", "ti", "ot", "j", "ty", "ut"];
-
-// var array3 = array2[1].filter(function (item) {
-
-//   if (array1.includes(item)) {
-//     console.log(item);
-//     console.log(array1.indexOf(item));
-//     return item;
-//   }
-// });
-
-// // console.log(array3);
-
-// console.log(randomMatch(array1, 2));
