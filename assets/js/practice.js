@@ -21,18 +21,35 @@ let ajArray = [];
 let history = [];
 
 btn.addEventListener("click", () => {
-  let inputValue = named.value;
+  const inputValue = named.value;
+  const id = new Date().getTime().toString();
+
   if (inputValue !== "") {
     array.push(inputValue);
-    let li = document.createElement("li");
-    li.innerText = inputValue;
-    list.appendChild(li);
+    let element = document.createElement("article");
+    let attr = document.createAttribute("data-id");
+    attr.value = id;
+    element.setAttributeNode(attr);
+    element.classList.add("match-item");
+    element.innerHTML = `<p class ="title">${inputValue}</p>`;
+    list.appendChild(element);
   } else {
     console.log("field is empty");
     error.textContent = "field is empty";
   }
   clearThis(named);
 });
+
+// display alert
+const displayAlert = (text, action) => {
+  error.textContent = text;
+  error.classList.add(`alert-${action}`);
+  // remove alert
+  setTimeout(() => {
+    error.textContent = "";
+    error.classList.add(`alert -${action}`);
+  }, 1000);
+};
 
 // shuffle function
 shuffle.addEventListener("click", () => {
@@ -50,16 +67,14 @@ shuffle.addEventListener("click", () => {
       // get the index
       // console.log(array.indexOf(item));
       // push, spread and splice it
-      history.push(...array.splice(array.indexOf(item), 1));
+      array.splice(array.indexOf(item), 1).join("");
+      // history.push(...array.splice(array.indexOf(item), 1));
     }
     // console.log("i am the remaining array after splice");
     console.log(array);
-    matchedHistory.innerHTML = history;
     // console.log("i keep track of the removed items");
     // console.log(history);
   });
-
-  // console.log(array.splice(randoms, 2));
 });
 
 // clear input field
@@ -81,8 +96,11 @@ const randomMatch = (arr, n) => {
   }
   let randoms = result;
   shuffled.push(randoms);
-  matches.innerHTML = shuffled;
-  console.log(shuffled);
-  // array.splice(shuffled[randoms]);
+  matches.innerHTML = `<h3>matches</h3>
+        <p>${result[0]} you've been matched with ${result[1]}</p>`;
+  history.push(`<p>${result[0]} you've been matched with ${result[1]}</p>`);
+  matchedHistory.innerHTML = history;
+  console.log(history);
+  console.log(randoms);
   return randoms;
 };

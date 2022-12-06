@@ -263,7 +263,7 @@ Grocery List
 .show-container {
   visibility: visible;
 }
-.grocery-item {
+.match-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -273,11 +273,11 @@ Grocery List
   border-radius: var(--radius);
   text-transform: capitalize;
 }
-.grocery-item:hover {
+.match-item:hover {
   color: var(--clr-grey-5);
   background: var(--clr-grey-10);
 }
-.grocery-item:hover .title {
+.match-item:hover .title {
   color: var(--clr-grey-5);
 }
 .title {
@@ -325,4 +325,17 @@ Grocery List
 }
 .clear-btn:hover {
   color: var(--clr-red-dark);
+}
+.matches {
+  margin-top: 1rem;
+  display: grid;
+  place-items: center;
+}
+.matches h2 {
+  place-items: center;
+}
+.opps {
+  margin-top: 1rem;
+  display: grid;
+  place-items: center;
 }
