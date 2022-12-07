@@ -20,9 +20,23 @@
       <ul id="list"></ul>
       <div class="matches"></div>
       <div class="opps">
-        <button class="shuffle btn">shuffle</button>
+        <div class="butts">
+          <button class="shuffle btn">shuffle</button>
+          <button class="modal-btn btn">history</button>
+        </div>
       </div>
-      <div class="history"></div>
+      <!-- modal -->
+      <div class="modal-overlay">
+        <div class="modal-container">
+          <h3>mathces made</h3>
+          <div class="history"></div>
+          <button class="close-btn">
+            <i class="fas fa-times"></i>
+            x
+          </button>
+        </div>
+      </div>
+      <!-- modal-end -->
     </div>
   </body>
   <script src="./assets/js/practice.js"></script>

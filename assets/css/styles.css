@@ -339,3 +339,59 @@ Grocery List
   display: grid;
   place-items: center;
 }
+.butts {
+  display: flex;
+  gap: 10px;
+}
+/* 
+=========
+Modal
+=========
+*/
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(9 10 10 / 50%);
+  display: grid;
+  place-items: center;
+  transition: var(--transition);
+  visibility: hidden;
+  z-index: -10;
+}
+/* OPEN/CLOSE MODAL */
+.open-modal {
+  visibility: visible;
+  z-index: 10;
+}
+.modal-container {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  width: 90vw;
+  height: 30vh;
+  max-width: var(--fixed-width);
+  text-align: center;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow-y: auto;
+  padding: 20px;
+}
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-red-dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.close-btn:hover {
+  color: var(--clr-red-light);
+  transform: scale(1.3);
+}

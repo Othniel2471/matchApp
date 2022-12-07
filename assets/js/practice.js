@@ -67,7 +67,7 @@ shuffle.addEventListener("click", () => {
       // get the index
       // console.log(array.indexOf(item));
       // push, spread and splice it
-      array.splice(array.indexOf(item), 1).join("");
+      array.splice(array.indexOf(item), 1).join(" ");
       // history.push(...array.splice(array.indexOf(item), 1));
     }
     // console.log("i am the remaining array after splice");
@@ -98,9 +98,24 @@ const randomMatch = (arr, n) => {
   shuffled.push(randoms);
   matches.innerHTML = `<h3>matches</h3>
         <p>${result[0]} you've been matched with ${result[1]}</p>`;
-  history.push(`<p>${result[0]} you've been matched with ${result[1]}</p>`);
+  history.push(`<p>${result[0]} you've been matched with ${result[1]}</p>`).jo;
   matchedHistory.innerHTML = history;
   console.log(history);
   console.log(randoms);
   return randoms;
 };
+
+// modal function
+const openBtn = document.querySelector(".modal-btn");
+const overlay = document.querySelector(".modal-overlay");
+const closeBtn = document.querySelector(".close-btn");
+
+openBtn.addEventListener("click", () => {
+  overlay.classList.add("open-modal");
+});
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("open-modal");
+});
+// overlay.addEventListener("click", () => [
+//   overlay.classList.remove("open-modal"),
+// ]);
