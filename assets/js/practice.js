@@ -36,7 +36,7 @@ btn.addEventListener("click", () => {
     element.classList.add("match-item");
     element.innerHTML = `<p class ="title">${inputValue}</p>`;
     list.appendChild(element);
-    displayAlert("name added to list", "success");
+    displayAlert(`${inputValue} added to the list`, "success");
     clrBtn.classList.add("clear-btn-show");
   } else {
     console.log("field is empty");
