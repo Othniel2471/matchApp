@@ -164,7 +164,12 @@ p {
   width: 90vw;
   margin: 0 auto;
   max-width: 35rem;
+  max-height: 35rem;
   margin-top: 8rem;
+  overflow-y: scroll;
+}
+.section-center::-webkit-scrollbar {
+  visibility: hidden;
 }
 @media screen and (min-width: 992px) {
   .section-center {
@@ -311,7 +316,7 @@ Grocery List
   text-transform: capitalize;
   width: 10rem;
   height: 1.5rem;
-  display: grid;
+  display: none;
   align-items: center;
   background: transparent;
   border-color: transparent;
@@ -326,6 +331,10 @@ Grocery List
 .clear-btn:hover {
   color: var(--clr-red-dark);
 }
+.clear-btn-show {
+  display: grid;
+}
+
 .matches {
   margin-top: 1rem;
   display: grid;

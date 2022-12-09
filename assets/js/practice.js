@@ -4,6 +4,7 @@ const shuffle = document.querySelector(".shuffle");
 const error = document.querySelector(".alert");
 const matches = document.querySelector(".matches");
 const matchedHistory = document.querySelector(".history");
+const clrBtn = document.querySelector(".clear-btn");
 
 let list = document.getElementById("list");
 
@@ -20,6 +21,8 @@ let ajArray = [];
 // history keeps track of all the deleted names
 let history = [];
 
+// clear list
+
 btn.addEventListener("click", () => {
   const inputValue = named.value;
   const id = new Date().getTime().toString();
@@ -33,28 +36,24 @@ btn.addEventListener("click", () => {
     element.classList.add("match-item");
     element.innerHTML = `<p class ="title">${inputValue}</p>`;
     list.appendChild(element);
+    displayAlert("name added to list", "success");
+    clrBtn.classList.add("clear-btn-show");
   } else {
     console.log("field is empty");
-    error.textContent = "field is empty";
+    displayAlert("field is empty", "danger");
   }
   clearThis(named);
 });
-
-// display alert
-const displayAlert = (text, action) => {
-  error.textContent = text;
-  error.classList.add(`alert-${action}`);
-  // remove alert
-  setTimeout(() => {
-    error.textContent = "";
-    error.classList.add(`alert -${action}`);
-  }, 1000);
-};
 
 // shuffle function
 shuffle.addEventListener("click", () => {
   if (array.length === 2) {
     shuffle.disabled = true;
+  }
+  if (array.length % 2 !== 0) {
+    displayAlert("need's at least two people to make a match", "danger");
+  } else {
+    displayAlert("new match made", "success");
   }
 
   randomMatch(array, 2);
@@ -116,6 +115,33 @@ openBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
   overlay.classList.remove("open-modal");
 });
-// overlay.addEventListener("click", () => [
-//   overlay.classList.remove("open-modal"),
-// ]);
+
+// display alert
+const displayAlert = (text, action) => {
+  error.textContent = text;
+  error.classList.add(`alert-${action}`);
+  // remove alert
+  setTimeout(function () {
+    error.textContent = "";
+    error.classList.remove(`alert-${action}`);
+  }, 1000);
+};
+
+// clear items
+const clearItems = () => {
+  const items = document.querySelectorAll(".match-item");
+  if (items.length > 0) {
+    items.forEach((item) => {
+      list.removeChild(item);
+    });
+  }
+  displayAlert("list emptied", "danger");
+};
+
+clrBtn.addEventListener("click", clearItems);
+clrBtn.addEventListener("click", () => {
+  if (clearItems) {
+    clrBtn.classList.remove("clear-btn-show");
+    matches.innerHTML = "";
+  }
+});
