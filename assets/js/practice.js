@@ -38,8 +38,8 @@ btn.addEventListener("click", () => {
     list.appendChild(element);
     displayAlert(`${inputValue} added to the list`, "success");
     clrBtn.classList.add("clear-btn-show");
+    console.log(array);
   } else {
-    console.log("field is empty");
     displayAlert("field is empty", "danger");
   }
   clearThis(named);
@@ -47,14 +47,14 @@ btn.addEventListener("click", () => {
 
 // shuffle function
 shuffle.addEventListener("click", () => {
-  if (array.length === 2) {
-    shuffle.disabled = true;
-  }
-  if (array.length % 2 !== 0) {
-    displayAlert("need's at least two people to make a match", "danger");
-  } else {
-    displayAlert("new match made", "success");
-  }
+  // if (array.length == 0) {
+  //   displayAlert("all items have been matched", "danger");
+  // }
+  // if (array.length % 2 !== 0) {
+  //   displayAlert("need's at least two people to make a match", "danger");
+  // } else {
+  //   displayAlert("new match made", "success");
+  // }
 
   randomMatch(array, 2);
 
@@ -99,8 +99,8 @@ const randomMatch = (arr, n) => {
         <p>${result[0]} you've been matched with ${result[1]}</p>`;
   history.push(`<p>${result[0]} you've been matched with ${result[1]}</p>`).jo;
   matchedHistory.innerHTML = history;
-  console.log(history);
-  console.log(randoms);
+  // console.log("this is history " + history);
+  // console.log(randoms);
   return randoms;
 };
 
@@ -143,5 +143,7 @@ clrBtn.addEventListener("click", () => {
   if (clearItems) {
     clrBtn.classList.remove("clear-btn-show");
     matches.innerHTML = "";
+    history.length = 0;
+    matchedHistory.innerHTML = "";
   }
 });
